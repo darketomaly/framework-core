@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/com.mardonpol.framework.core/Scripts/Editor/Setup/(StyleSheet)%20Wizard.uss?fileID=7433441132597879392&amp;guid=174e51341b5128d41aa233c69ee83fbe&amp;type=3#(StyleSheet) Wizard" />
+    <ui:ScrollView style="padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px;">
+        <ui:Button text="Create Prefab Registry" parse-escape-sequences="true" display-tooltip-when-elided="true" name="button-prefab-registry" style="margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0;" />
+    </ui:ScrollView>
+</ui:UXML>
