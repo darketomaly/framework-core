@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d822798f91f9a2f489b1dd23ce0e3197, type: 3}
   m_Name: Framework project config
   m_EditorClassIdentifier: darketomaly.framework.core.runtime::Framework.FrameworkProjectConfig
+  <DiscordWebhookUrl1>k__BackingField: webhook url
+  <DiscordWebhookUrl2>k__BackingField: 
+  <DiscordWebhookUrl3>k__BackingField: 

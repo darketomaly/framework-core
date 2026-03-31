@@ -14,11 +14,8 @@ namespace Framework.Editor
         {
             // Load scriptable
             
-            var projectConfig = Resources.Load<FrameworkProjectConfig>("Framework/Framework project config");
-
-            if (projectConfig != null)
+            if (Resources.Load<FrameworkProjectConfig>("Framework/Framework project config"))
             {
-                projectConfig.Log("Framework config already exists");
                 return;
             }
 
