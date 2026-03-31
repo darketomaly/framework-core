@@ -12,5 +12,8 @@ namespace Framework
         
         [field: SerializeField] 
         public string DiscordWebhookUrl3 { get; private set; }
+
+        [field: SerializeField, Space] 
+        public string IpCheckUrl { get; private set; }
     }
 }
