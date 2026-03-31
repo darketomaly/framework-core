@@ -14,6 +14,6 @@ namespace Framework
         public string DiscordWebhookUrl3 { get; private set; }
 
         [field: SerializeField, Space] 
-        public string IpCheckUrl { get; private set; }
+        public string IpCheckUrl { get; private set; } = "https://api.ipify.org";
     }
 }
