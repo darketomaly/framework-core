@@ -82,12 +82,11 @@ namespace ProjectCastaway.API.Discord
             
             var data = new
             {
-                DisplayName = $"",
-                PlatformUserId = $"",
+                FrameworkProjectConfig.Instance.DisplayName,
+                FrameworkProjectConfig.Instance.PlatformUserId,
                 PublicIP = $"{m_publicIp}",
-                
-                Platform = "", 
-                Version = "",
+                FrameworkProjectConfig.Instance.Platform,
+                FrameworkProjectConfig.Instance.Version,
             };
             
             // Discord embed
