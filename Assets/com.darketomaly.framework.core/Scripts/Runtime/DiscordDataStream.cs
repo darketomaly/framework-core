@@ -27,7 +27,7 @@ namespace ProjectCastaway.API.Discord
 
         private IEnumerator GetPublicIP()
         {
-            using (UnityWebRequest www = UnityWebRequest.Get(""))
+            using (UnityWebRequest www = UnityWebRequest.Get(FrameworkProjectConfig.Instance.IpCheckUrl))
             {
                 yield return www.SendWebRequest();
 
@@ -57,7 +57,7 @@ namespace ProjectCastaway.API.Discord
             
             Instance.m_lastMessage = message;
             Instance.m_lastMessageAt = Time.time;
-            Instance.StartCoroutine(Instance.SendWebhook(message, ""));
+            Instance.StartCoroutine(Instance.SendWebhook(message, FrameworkProjectConfig.Instance.DiscordWebhookUrl1));
         }
         
         public static void Push(string message, string webhookUrl)

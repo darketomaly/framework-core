@@ -4,6 +4,8 @@ namespace Framework
 {
     public class FrameworkProjectConfig : ScriptableObject
     {
+        public static FrameworkProjectConfig Instance => Resources.Load<FrameworkProjectConfig>("Framework/Framework project config");
+
         [field: SerializeField] 
         public string DiscordWebhookUrl1 { get; private set; }
         
