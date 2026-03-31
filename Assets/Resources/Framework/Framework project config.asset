@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d822798f91f9a2f489b1dd23ce0e3197, type: 3}
   m_Name: Framework project config
   m_EditorClassIdentifier: darketomaly.framework.core.runtime::Framework.FrameworkProjectConfig
-  <DiscordWebhookUrl1>k__BackingField: 
+  <DiscordWebhookUrl1>k__BackingField: https://discord.com/api/webhooks/1488239017639022622/nt4q3So4c3oXwtfS7-6Nnju_vyw_HEyjToR0j9z3Ioq1S1bAT2VXPYfUhpkOr4yyTXtr
   <DiscordWebhookUrl2>k__BackingField: 
   <DiscordWebhookUrl3>k__BackingField: 
   <IpCheckUrl>k__BackingField: https://api.ipify.org
