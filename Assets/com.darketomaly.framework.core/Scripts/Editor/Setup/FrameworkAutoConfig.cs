@@ -12,7 +12,8 @@ namespace Framework.Editor
 
         static FrameworkAutoConfig()
         {
-            // First, try to load it using Resources (this is what you'll use at runtime)
+            // Load scriptable
+            
             var projectConfig = Resources.Load<FrameworkProjectConfig>("Framework/Framework project config");
 
             if (projectConfig != null)
@@ -21,7 +22,7 @@ namespace Framework.Editor
                 return;
             }
 
-            // If not found via Resources.Load, create the necessary folders and asset
+            // If not found, create the necessary folders and asset
             
             // Create Resources folder if it doesn't exist
             if (!AssetDatabase.IsValidFolder(ResourcesFolder))
