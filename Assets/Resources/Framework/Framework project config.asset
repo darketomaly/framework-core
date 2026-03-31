@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d822798f91f9a2f489b1dd23ce0e3197, type: 3}
-  m_Name: Framework
+  m_Name: Framework project config
   m_EditorClassIdentifier: darketomaly.framework.core.runtime::Framework.FrameworkProjectConfig

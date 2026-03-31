@@ -8,12 +8,12 @@ namespace Framework.Editor
     {
         private const string ResourcesFolder = "Assets/Resources";
         private const string FrameworkSubFolder = "Framework";
-        private const string AssetPath = "Assets/Resources/Framework/Framework.asset";
+        private const string AssetPath = "Assets/Resources/Framework/Framework project config.asset";
 
         static FrameworkAutoConfig()
         {
             // First, try to load it using Resources (this is what you'll use at runtime)
-            FrameworkProjectConfig projectConfig = Resources.Load<FrameworkProjectConfig>("Framework/Framework");
+            var projectConfig = Resources.Load<FrameworkProjectConfig>("Framework/Framework project config");
 
             if (projectConfig != null)
             {
@@ -43,7 +43,7 @@ namespace Framework.Editor
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
 
-            Debug.Log($"[Framework] Created default project config at: {AssetPath}");
+            newConfig.Log($"Created default project config at {AssetPath}");
         }
     }
 }
