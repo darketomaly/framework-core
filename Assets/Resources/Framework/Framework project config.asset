@@ -16,12 +16,7 @@ MonoBehaviour:
   <DiscordWebhookUrl2>k__BackingField: 
   <DiscordWebhookUrl3>k__BackingField: 
   <IpCheckUrl>k__BackingField: https://api.ipify.org
-  m_Modules:
-  - rid: 2418989484551176250
+  m_Modules: []
   references:
     version: 2
-    RefIds:
-    - rid: 2418989484551176250
-      type: {class: PlatformProjectConfigData, ns: Framework, asm: Assembly-CSharp}
-      data:
-        PlayfabId: 
+    RefIds: []
