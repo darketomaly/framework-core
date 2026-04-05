@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Framework
 {
-    public class FrameworkProjectConfig : ScriptableObject
+    public partial class FrameworkProjectConfig : ScriptableObject
     {
         public static FrameworkProjectConfig Instance => Resources.Load<FrameworkProjectConfig>("Framework/Framework project config");
 
