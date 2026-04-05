@@ -1,9 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Framework
 {
-    public partial class FrameworkProjectConfig : ScriptableObject
+    public class FrameworkProjectConfig : ScriptableObject
     {
         public static FrameworkProjectConfig Instance => Resources.Load<FrameworkProjectConfig>("Framework/Framework project config");
 
@@ -37,5 +39,24 @@ namespace Framework
             Platform = platform;
             Version = version;
         }
+        
+        // === Module system for optional packages ===
+        [SerializeReference]
+        private List<object> m_Modules = new();
+        
+        public T GetModule<T>() where T : FrameworkModuleData
+        {
+            return m_Modules.OfType<T>().FirstOrDefault();
+        }
+        
+        public void AddModule<T>(object module) where T : FrameworkModuleData
+        {
+            if (module == null || m_Modules.Any(m => m.GetType() == module.GetType()))
+                return;
+            
+            m_Modules.Add(module);
+        }
     }
+    
+    public abstract class FrameworkModuleData { }
 }
