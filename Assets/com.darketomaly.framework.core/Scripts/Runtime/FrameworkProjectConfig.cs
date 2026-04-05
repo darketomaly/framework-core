@@ -44,6 +44,8 @@ namespace Framework
         [SerializeReference]
         private List<object> m_Modules = new();
         
+        public IReadOnlyList<object> Modules => m_Modules;
+        
         public T GetModule<T>() where T : FrameworkModuleData
         {
             return m_Modules.OfType<T>().FirstOrDefault();

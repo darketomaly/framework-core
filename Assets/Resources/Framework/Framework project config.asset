@@ -12,7 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d822798f91f9a2f489b1dd23ce0e3197, type: 3}
   m_Name: Framework project config
   m_EditorClassIdentifier: darketomaly.framework.core.runtime::Framework.FrameworkProjectConfig
-  <DiscordWebhookUrl1>k__BackingField: https://discord.com/api/webhooks/1488239017639022622/nt4q3So4c3oXwtfS7-6Nnju_vyw_HEyjToR0j9z3Ioq1S1bAT2VXPYfUhpkOr4yyTXtr
+  <DiscordWebhookUrl1>k__BackingField: 
   <DiscordWebhookUrl2>k__BackingField: 
   <DiscordWebhookUrl3>k__BackingField: 
   <IpCheckUrl>k__BackingField: https://api.ipify.org
+  m_Modules:
+  - rid: 2418989484551176250
+  references:
+    version: 2
+    RefIds:
+    - rid: 2418989484551176250
+      type: {class: PlatformProjectConfigData, ns: Framework, asm: Assembly-CSharp}
+      data:
+        PlayfabId: 
