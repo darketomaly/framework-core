@@ -1,11 +1,10 @@
 using System;
 using System.Collections;
 using System.Text;
-using Framework;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace ProjectCastaway.API.Discord
+namespace Framework
 {
     public class DiscordDataStream : MonoBehaviour
     {
