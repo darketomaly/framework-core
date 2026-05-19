@@ -117,6 +117,16 @@ namespace Framework.Editor
                         EditorUtility.SetDirty(target);
                     }
                 }
+                else if (field.FieldType == typeof(uint))
+                {
+                    uint newValue = (uint)Mathf.Clamp(EditorGUILayout.LongField(label, (uint)value), uint.MinValue, uint.MaxValue);
+                    
+                    if (newValue != (uint)value)
+                    {
+                        field.SetValue(obj, newValue);
+                        EditorUtility.SetDirty(target);
+                    }
+                }
                 else
                 {
                     // Fallback for complex types or unsupported
