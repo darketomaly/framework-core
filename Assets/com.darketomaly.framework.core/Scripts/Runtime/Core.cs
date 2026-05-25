@@ -73,6 +73,9 @@ namespace Framework
         
         public abstract class Prefs
         {
+            public static Dictionary<string, bool> CachedBools = new();
+            public static Dictionary<string, string> CachedColorStrings = new();
+            
             private static readonly Dictionary<string, string> Keys = new()
             {
                 {Key.LogColor, "627bc4"},
@@ -99,9 +102,15 @@ namespace Framework
                 return Keys[key];
                 
                 #else
-                
-                return EditorPrefs.GetString(key, Keys[key]);
-                
+
+                if (!CachedColorStrings.TryGetValue(key, out var colorString))
+                {
+                    colorString = EditorPrefs.GetString(key, Keys[key]);
+                    CachedColorStrings.Add(key, colorString);
+                }
+
+                return colorString;
+
                 #endif
             }
 

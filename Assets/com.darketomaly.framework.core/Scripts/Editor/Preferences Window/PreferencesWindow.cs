@@ -55,9 +55,10 @@ namespace Framework.Editor
             root.Q<Toggle>("MethodName").RegisterValueChangedCallback(changeEvent => { OnToggleValueChanged(changeEvent, Core.Prefs.Key.LogMethodName); });
         }
 
-        private void OnToggleValueChanged(ChangeEvent<bool> evt, string key)
+        private static void OnToggleValueChanged(ChangeEvent<bool> evt, string key)
         {
             EditorPrefs.SetBool(key, evt.newValue);
+            Core.Prefs.CachedBools[key] = evt.newValue;
         }
         
         private void OnEnumFlagsValueChanged(ChangeEvent<Enum> evt, string key)
@@ -69,6 +70,7 @@ namespace Framework.Editor
         {
             var htmlStringRgba = ColorUtility.ToHtmlStringRGB(evt.newValue);
             EditorPrefs.SetString(key, htmlStringRgba);
+            Core.Prefs.CachedColorStrings[key] = htmlStringRgba;
         }
     }
 }

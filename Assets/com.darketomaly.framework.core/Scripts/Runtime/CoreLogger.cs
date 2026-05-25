@@ -8,22 +8,40 @@ namespace Framework
     {
         private static string GetNameOrFullName(this System.Type type, string callerName)
         {
-            var appendedMethodName = string.Empty;
             var typeString = type.Name;
-            
-            #if UNITY_EDITOR
+            var appendedMethodName = string.Empty;
 
-            if (EditorPrefs.GetBool(Core.Prefs.Key.FullTypePath, false))
+            #if UNITY_EDITOR
+            
+            // Append full type
+
+            if (!Core.Prefs.CachedBools.TryGetValue(Core.Prefs.Key.FullTypePath, out var logFullType))
+            {
+                logFullType = EditorPrefs.GetBool(Core.Prefs.Key.FullTypePath, false);
+                Core.Prefs.CachedBools.Add(Core.Prefs.Key.FullTypePath, logFullType);   
+            }
+
+            if (logFullType)
             {
                 typeString = type.ToString();
             }
+            
+            // Append method name
+            
+            if (!Core.Prefs.CachedBools.TryGetValue(Core.Prefs.Key.LogMethodName, out var appendMethodName))
+            {
+                appendMethodName = EditorPrefs.GetBool(Core.Prefs.Key.LogMethodName, false);
+                Core.Prefs.CachedBools.Add(Core.Prefs.Key.LogMethodName, appendMethodName);   
+            }
 
-            if (EditorPrefs.GetBool(Core.Prefs.Key.LogMethodName, false))
+            if (appendMethodName)
             {
                 appendedMethodName = $":{callerName}";
             }
             
             #endif
+            
+            // Return the final string
 
             return $"{typeString}{appendedMethodName}";
         }
