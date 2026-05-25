@@ -11,10 +11,10 @@ namespace Framework.Editor
         [SerializeField]
         private VisualTreeAsset m_VisualTreeAsset = default;
 
-        [MenuItem("Tools/Framework/Preferences")]
+        [MenuItem("Tools/Framework/Framework preferences")]
         public static void ShowExample()
         {
-            PreferencesWindow wnd = GetWindow<PreferencesWindow>();
+            var wnd = GetWindow<PreferencesWindow>();
             wnd.titleContent = new GUIContent("Framework Preferences");
         }
 
@@ -37,6 +37,9 @@ namespace Framework.Editor
             root.Q<ColorField>("ImportantLogColor").SetValueWithoutNotify(Core.Prefs.GetColor(Core.Prefs.Key.ImportantLogColor));
             root.Q<ColorField>("WarningLogColor").SetValueWithoutNotify(Core.Prefs.GetColor(Core.Prefs.Key.WarningLogColor));
             root.Q<ColorField>("ErrorLogColor").SetValueWithoutNotify(Core.Prefs.GetColor(Core.Prefs.Key.ErrorLogColor));
+            
+            root.Q<Toggle>("FullTypePath").SetValueWithoutNotify(EditorPrefs.GetBool(Core.Prefs.Key.FullTypePath));
+            root.Q<Toggle>("MethodName").SetValueWithoutNotify(EditorPrefs.GetBool(Core.Prefs.Key.LogMethodName));
         }
         
         private void Subscribe()
@@ -49,6 +52,7 @@ namespace Framework.Editor
             root.Q<ColorField>("ErrorLogColor").RegisterValueChangedCallback(changeEvent => { OnColorValueChanged(changeEvent, Core.Prefs.Key.ErrorLogColor); });
 
             root.Q<Toggle>("FullTypePath").RegisterValueChangedCallback(changeEvent => { OnToggleValueChanged(changeEvent, Core.Prefs.Key.FullTypePath); });
+            root.Q<Toggle>("MethodName").RegisterValueChangedCallback(changeEvent => { OnToggleValueChanged(changeEvent, Core.Prefs.Key.LogMethodName); });
         }
 
         private void OnToggleValueChanged(ChangeEvent<bool> evt, string key)

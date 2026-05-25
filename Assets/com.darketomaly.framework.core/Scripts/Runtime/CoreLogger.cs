@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 
@@ -5,23 +6,31 @@ namespace Framework
 {
     public static class CoreLogger
     {
-        private static string GetNameOrFullName(this System.Type type)
+        private static string GetNameOrFullName(this System.Type type, string callerName)
         {
+            var appendedMethodName = string.Empty;
+            var typeString = type.Name;
+            
             #if UNITY_EDITOR
 
             if (EditorPrefs.GetBool(Core.Prefs.Key.FullTypePath, false))
             {
-                return type.ToString();
+                typeString = type.ToString();
+            }
+
+            if (EditorPrefs.GetBool(Core.Prefs.Key.LogMethodName, false))
+            {
+                appendedMethodName = $":{callerName}";
             }
             
             #endif
 
-            return type.Name;
+            return $"{typeString}{appendedMethodName}";
         }
 
-        private static void LogContext<T>(T contextObject, object message, string color, bool isError)
+        private static void LogContext<T>(T contextObject, object message, string color, bool isError, string callerName)
         {
-            var type = contextObject.GetType().GetNameOrFullName();
+            var type = contextObject.GetType().GetNameOrFullName(callerName);
             var msg = $"<color=#{color}>[{type}]</color> {message}";
             var context = contextObject is Object ? (Object)(object)contextObject : null;
 
@@ -32,10 +41,10 @@ namespace Framework
         #if UNITY_2022_3_OR_NEWER
         [HideInCallstack]
         #endif
-        public static void Log<T>(this T contextObject, object message)
+        public static void Log<T>(this T contextObject, object message, [CallerMemberName] string callerName = null)
         {
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
-            LogContext(contextObject, message, Core.Prefs.GetColorString(Core.Prefs.Key.LogColor), false);
+            LogContext(contextObject, message, Core.Prefs.GetColorString(Core.Prefs.Key.LogColor), false, callerName);
             #endif
         }
         
@@ -52,10 +61,10 @@ namespace Framework
         #if UNITY_2022_3_OR_NEWER
         [HideInCallstack]
         #endif
-        public static void LogWarning<T>(this T contextObject, object message)
+        public static void LogWarning<T>(this T contextObject, object message, [CallerMemberName] string callerName = null)
         {
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
-            LogContext(contextObject, message, Core.Prefs.GetColorString(Core.Prefs.Key.WarningLogColor), false);
+            LogContext(contextObject, message, Core.Prefs.GetColorString(Core.Prefs.Key.WarningLogColor), false, callerName);
             #endif
         }
         
@@ -72,10 +81,10 @@ namespace Framework
         #if UNITY_2022_3_OR_NEWER
         [HideInCallstack]
         #endif
-        public static void LogImportant<T>(this T contextObject, object message)
+        public static void LogImportant<T>(this T contextObject, object message, [CallerMemberName] string callerName = null)
         {
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
-            LogContext(contextObject, message, Core.Prefs.GetColorString(Core.Prefs.Key.ImportantLogColor), false);
+            LogContext(contextObject, message, Core.Prefs.GetColorString(Core.Prefs.Key.ImportantLogColor), false, callerName);
             #endif
         }
         
@@ -92,10 +101,10 @@ namespace Framework
         #if UNITY_2022_3_OR_NEWER
         [HideInCallstack]
         #endif
-        public static void LogError<T>(this T contextObject, object message)
+        public static void LogError<T>(this T contextObject, object message, [CallerMemberName] string callerName = null)
         {
             #if UNITY_EDITOR || DEVELOPMENT_BUILD
-            LogContext(contextObject, message, Core.Prefs.GetColorString(Core.Prefs.Key.ErrorLogColor), true);
+            LogContext(contextObject, message, Core.Prefs.GetColorString(Core.Prefs.Key.ErrorLogColor), true, callerName);
             #endif
         }
         

@@ -89,21 +89,8 @@ namespace Framework
                 public const string ErrorLogColor = "ErrorLogColor";
                 
                 public const string FullTypePath = "FullTypeName";
+                public const string LogMethodName = "MethodName";
             }
-
-            #if UNITY_EDITOR
-            
-            [MenuItem("Tools/Framework/Clear Preferences")]
-            public static void Clear()
-            {
-                EditorPrefs.DeleteKey(Key.LogColor);
-                EditorPrefs.DeleteKey(Key.ImportantLogColor);
-                EditorPrefs.DeleteKey(Key.WarningLogColor);
-                EditorPrefs.DeleteKey(Key.ErrorLogColor);
-                EditorPrefs.DeleteKey("FrameworkSetup");
-            }
-            
-            #endif
             
             public static string GetColorString(string key)
             {
