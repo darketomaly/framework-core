@@ -21,6 +21,9 @@ namespace Framework
         [field: SerializeField, Space] 
         public string IpCheckUrl { get; private set; } = "https://api.ipify.org";
 
+        [field: SerializeField, Space] 
+        public GameObject GameManagerPrefab { get; private set; }
+
         public string DisplayName { get; private set; }
         
         public string PlatformUserId { get; private set; }

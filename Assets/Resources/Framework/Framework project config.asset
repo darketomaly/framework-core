@@ -16,6 +16,7 @@ MonoBehaviour:
   <DiscordWebhookUrl2>k__BackingField: 
   <DiscordWebhookUrl3>k__BackingField: 
   <IpCheckUrl>k__BackingField: https://api.ipify.org
+  <GameManagerPrefab>k__BackingField: {fileID: 0}
   m_Modules: []
   references:
     version: 2
