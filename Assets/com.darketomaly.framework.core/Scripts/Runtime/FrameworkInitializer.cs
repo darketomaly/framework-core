@@ -10,8 +10,14 @@ namespace Framework
             var projectConfig = Resources.Load<FrameworkProjectConfig>("Framework/Framework project config");
             var prefab = projectConfig.GameManagerPrefab;
 
-            var spawn = Object.Instantiate(prefab);
-            Object.DontDestroyOnLoad(spawn);
+            if (prefab)
+            {
+                var spawn = Object.Instantiate(prefab);
+                Object.DontDestroyOnLoad(spawn);
+            } else
+            {
+                projectConfig.LogError("Game manager prefab not found, please assign one on Resources/Framework project config scriptable.");
+            }
         }
     }
 }
