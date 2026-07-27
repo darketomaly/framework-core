@@ -36,7 +36,7 @@ namespace Framework
         /// Raised when a fade begins.
         /// </summary>
         /// <param name="isFadingIn">True if fading in, false if fading out.</param>
-        public Action<bool> OnFadeStart;
+        public static Action<bool> OnFadeStart;
 
         [Tooltip("Fade duration")]
         public float m_FadeTime = 2.0f;
