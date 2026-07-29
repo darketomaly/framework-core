@@ -1,0 +1,19 @@
+/* Variables */
+
+:root {
+    --color-text-paragraph: rgb(255 255 255);
+    --color-element-panel: rgb(0 0 0);
+}
+
+/* Types */
+
+Label {
+    font-size: 16px;
+    color: var(--color-text-paragraph);
+}
+
+/* Classes */
+
+.main_panel {
+    background-color: var(--color-element-panel);
+}
