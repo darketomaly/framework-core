@@ -1,4 +1,6 @@
+using System;
 using Framework;
+using Framework.Events;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +8,21 @@ namespace TestNamespace
 {
     public class Test : MonoBehaviour
     {
+        private void OnEnable()
+        {
+            FrameworkEventsFactory.SubscribeWithPayload<bool>(FrameworkEvents.OnFadeStart, OnFadeStart);   
+        }
+        
+        private void OnDisable()
+        {
+            FrameworkEventsFactory.UnsubscribeWithPayload<bool>(FrameworkEvents.OnFadeStart, OnFadeStart);   
+        }
+
+        private void OnFadeStart(bool value)
+        {
+            this.Log($"Fade start. Fade in: {value}");
+        }
+        
         [ContextMenu("Test")]
         private void TestMethod()
         {

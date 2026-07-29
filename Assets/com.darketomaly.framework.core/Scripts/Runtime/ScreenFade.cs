@@ -21,6 +21,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using Framework.Events;
 
 namespace Framework
 {
@@ -31,12 +32,6 @@ namespace Framework
     public class ScreenFade : MonoBehaviour
     {
         public static ScreenFade Instance { get; private set; }
-
-        /// <summary>
-        /// Raised when a fade begins.
-        /// </summary>
-        /// <param name="isFadingIn">True if fading in, false if fading out.</param>
-        public static Action<bool> OnFadeStart;
 
         [Tooltip("Fade duration")]
         public float m_FadeTime = 2.0f;
@@ -146,7 +141,7 @@ namespace Framework
         {
             StopAllCoroutines();
             StartCoroutine(Fade(1.0f, 0.0f));
-            OnFadeStart?.Invoke(true);
+            FrameworkEventsFactory.RaiseWithPayload(FrameworkEvents.OnFadeStart, true);
         }
 
         /// <summary>
@@ -156,7 +151,7 @@ namespace Framework
         {
             StopAllCoroutines();
             StartCoroutine(Fade(0, 1));
-            OnFadeStart?.Invoke(false);
+            FrameworkEventsFactory.RaiseWithPayload(FrameworkEvents.OnFadeStart, false);
         }
 
         /// <summary>
