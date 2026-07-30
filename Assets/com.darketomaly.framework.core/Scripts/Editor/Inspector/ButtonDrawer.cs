@@ -29,6 +29,7 @@ namespace Framework
 
         private readonly List<ButtonEntry> m_entries = new List<ButtonEntry>();
         private GUIStyle m_buttonStyle;
+        public string EntryCountForDebug { get; set; }
 
         public void Init(object target)
         {
