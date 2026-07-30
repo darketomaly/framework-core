@@ -137,6 +137,7 @@ namespace Framework
         /// <summary>
         /// Start a fade in
         /// </summary>
+        [ContextMenu("Fade in")]
         public void FadeIn()
         {
             StopAllCoroutines();
@@ -144,9 +145,7 @@ namespace Framework
             FrameworkEventsFactory.RaiseWithPayload(FrameworkEvents.OnFadeStart, true);
         }
 
-        /// <summary>
-        /// Start a fade out
-        /// </summary>
+        [ContextMenu("Fade out")]
         public void FadeOut()
         {
             StopAllCoroutines();
