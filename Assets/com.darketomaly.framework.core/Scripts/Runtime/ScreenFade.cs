@@ -137,17 +137,21 @@ namespace Framework
         /// <summary>
         /// Start a fade in
         /// </summary>
-        [ContextMenu("Fade in")]
+        [Button]
         public void FadeIn()
         {
+            this.Log("Fading in");
+            
             StopAllCoroutines();
             StartCoroutine(Fade(1.0f, 0.0f));
             FrameworkEventsFactory.RaiseWithPayload(FrameworkEvents.OnFadeStart, true);
         }
 
-        [ContextMenu("Fade out")]
+        [Button]
         public void FadeOut()
         {
+            this.Log("Fading out");
+            
             StopAllCoroutines();
             StartCoroutine(Fade(0, 1));
             FrameworkEventsFactory.RaiseWithPayload(FrameworkEvents.OnFadeStart, false);
