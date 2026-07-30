@@ -27,12 +27,12 @@ namespace Framework
             typeof(int), typeof(float), typeof(bool), typeof(string)
         };
 
-        private List<ButtonEntry> _entries = new List<ButtonEntry>();
-        private GUIStyle _buttonStyle;
+        private readonly List<ButtonEntry> m_entries = new List<ButtonEntry>();
+        private GUIStyle m_buttonStyle;
 
         public void Init(object target)
         {
-            _entries.Clear();
+            m_entries.Clear();
             if (target == null) return;
 
             var methods = target.GetType()
@@ -44,7 +44,7 @@ namespace Framework
                 var parameters = method.GetParameters();
                 bool supported = parameters.All(p => SupportedParamTypes.Contains(p.ParameterType));
 
-                _entries.Add(new ButtonEntry
+                m_entries.Add(new ButtonEntry
                 {
                     Method = method,
                     Attribute = method.GetCustomAttribute<ButtonAttribute>(),
@@ -58,27 +58,27 @@ namespace Framework
         private GUIStyle GetButtonStyle()
         {
             // GUIStyle can't be built in a field initializer / before GUI runs, so lazily create it
-            if (_buttonStyle == null)
+            if (m_buttonStyle == null)
             {
-                _buttonStyle = new GUIStyle(GUI.skin.button)
+                m_buttonStyle = new GUIStyle(GUI.skin.button)
                 {
                     fontStyle = FontStyle.Bold,
                     fixedHeight = ButtonHeight
                 };
             }
-            return _buttonStyle;
+            return m_buttonStyle;
         }
 
         public void Draw(UnityEngine.Object[] targets)
         {
-            if (_entries.Count == 0) return;
+            if (m_entries.Count == 0) return;
 
             GUILayout.Space(8);
 
             var style = GetButtonStyle();
             var previousColor = GUI.backgroundColor;
 
-            foreach (var entry in _entries)
+            foreach (var entry in m_entries)
             {
                 if (!entry.Supported)
                 {
