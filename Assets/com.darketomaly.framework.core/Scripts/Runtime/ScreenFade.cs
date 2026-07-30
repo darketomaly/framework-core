@@ -137,7 +137,6 @@ namespace Framework
         /// <summary>
         /// Start a fade in
         /// </summary>
-        [Button]
         public void FadeIn()
         {
             this.Log("Fading in");
@@ -147,7 +146,6 @@ namespace Framework
             FrameworkEventsFactory.RaiseWithPayload(FrameworkEvents.OnFadeStart, true);
         }
 
-        [Button]
         public void FadeOut()
         {
             this.Log("Fading out");
