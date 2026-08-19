@@ -9,22 +9,6 @@ namespace Framework
 {
     public static partial class Core
     {
-        public static PrefabRegistry PrefabRegistryInstance
-        {
-            get
-            {
-                if (!_prefabRegistry)
-                {
-                    var prefabRegistries = Resources.LoadAll<PrefabRegistry>(string.Empty);
-                    _prefabRegistry = prefabRegistries[0];
-                }
-                
-                return _prefabRegistry;
-            }
-        }
-
-        private static PrefabRegistry _prefabRegistry;
-        
         /// <summary>
         /// Safely retrieves an element from an array of objects.
         /// </summary>
