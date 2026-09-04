@@ -48,7 +48,7 @@ namespace Framework
 
                 if (obj is T obj1)
                 {
-                    return obj1;
+                    return obj1; //
                 }
             }
             
