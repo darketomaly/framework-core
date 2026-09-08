@@ -7,4 +7,10 @@ namespace Framework.Events
         /// </summary>
         OnFadeStart
     }
+    
+    public enum PlayerEvents
+    {
+        Enabled,
+    }
+
 }
