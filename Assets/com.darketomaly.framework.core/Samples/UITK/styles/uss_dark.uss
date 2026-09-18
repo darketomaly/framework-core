@@ -1,0 +1,6 @@
+/* Variables */
+
+:root {
+    --color-text-paragraph: rgb(214 214 214);
+    --color-element-panel: rgb(44 44 44);
+}
