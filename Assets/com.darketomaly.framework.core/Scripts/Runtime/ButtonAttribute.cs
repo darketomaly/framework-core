@@ -1,15 +1,12 @@
 using System;
 
-namespace Framework
+[AttributeUsage(AttributeTargets.Method, Inherited = true, AllowMultiple = false)]
+public class ButtonAttribute : Attribute
 {
-    [AttributeUsage(AttributeTargets.Method, Inherited = true)]
-    public sealed class ButtonAttribute : Attribute
-    {
-        public string Label { get; }
+    public string ButtonName { get; }
 
-        public ButtonAttribute(string label = null)
-        {
-            Label = label;
-        }
+    public ButtonAttribute(string buttonName = null)
+    {
+        ButtonName = buttonName;
     }
 }

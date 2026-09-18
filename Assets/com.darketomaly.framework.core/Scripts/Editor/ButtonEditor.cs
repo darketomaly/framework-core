@@ -1,58 +1,45 @@
-using System;
 using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
-namespace Framework.EditorTools
+[CustomEditor(typeof(MonoBehaviour), true)]
+[CanEditMultipleObjects]
+public class MethodButtonEditor : Editor
 {
-    [InitializeOnLoad]
-    internal static class ButtonEditor
+    public override void OnInspectorGUI()
     {
-        private const BindingFlags MethodFlags =
-            BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+        // Draw the default fields first
+        DrawDefaultInspector();
 
-        static ButtonEditor()
+        // Use reflection to find all methods with the [Button] attribute
+        var methods = target.GetType()
+            .GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
+            .Where(m => m.GetCustomAttribute<ButtonAttribute>() != null);
+
+        foreach (var method in methods)
         {
-            UnityEditor.Editor.finishedDefaultHeaderGUI += DrawButtons;
-        }
+            var attribute = method.GetCustomAttribute<ButtonAttribute>();
+            
+            // Fallback to the method's name if no custom label is provided
+            string buttonLabel = string.IsNullOrEmpty(attribute.ButtonName) 
+                ? ObjectNames.NicifyVariableName(method.Name) 
+                : attribute.ButtonName;
 
-        private static void DrawButtons(UnityEditor.Editor editor)
-        {
-            if (!(editor.target is MonoBehaviour))
-                return;
-
-            var methods = editor.target.GetType()
-                .GetMethods(MethodFlags)
-                .Where(method => method.GetCustomAttribute<ButtonAttribute>() != null)
-                .Where(method => !method.IsSpecialName && method.GetParameters().Length == 0)
-                .ToArray();
-
-            if (methods.Length == 0)
-                return;
-
-            EditorGUILayout.Space(EditorGUIUtility.standardVerticalSpacing);
-
-            foreach (var method in methods)
+            // Restrict to parameterless methods for this basic implementation
+            if (method.GetParameters().Length == 0)
             {
-                var button = method.GetCustomAttribute<ButtonAttribute>();
-                var label = string.IsNullOrEmpty(button.Label)
-                    ? ObjectNames.NicifyVariableName(method.Name)
-                    : button.Label;
-
-                if (!GUILayout.Button(label))
-                    continue;
-
-                foreach (var target in editor.targets)
+                if (GUILayout.Button(buttonLabel))
                 {
-                    var monoBehaviour = target as MonoBehaviour;
-                    if (monoBehaviour == null)
-                        continue;
-
-                    Undo.RecordObject(monoBehaviour, label);
-                    method.Invoke(monoBehaviour, null);
-                    EditorUtility.SetDirty(monoBehaviour);
+                    foreach (var t in targets)
+                    {
+                        method.Invoke(t, null);
+                    }
                 }
+            }
+            else
+            {
+                EditorGUILayout.HelpBox($"Button '{method.Name}' cannot be drawn: Methods with parameters are not supported in this basic implementation.", MessageType.Warning);
             }
         }
     }
