@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0b000eb5be15c044895b0a65811594ab
+guid: 230d219329e39cb4f9f4749b5992d6c1
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Saira SemiCondensed
+  - Rajdhani
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

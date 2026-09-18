@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 19101, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: panelsettings_vr
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.PanelSettings
-  themeUss: {fileID: -4733365628477956816, guid: 2729a4fbfc172854daedf72da4d75a2e, type: 3}
+  themeUss: {fileID: -4733365628477956816, guid: d086ab2b6880a4b4388ef67c847adf78, type: 3}
   m_DisableNoThemeWarning: 0
   m_TargetTexture: {fileID: 0}
   m_RenderMode: 1

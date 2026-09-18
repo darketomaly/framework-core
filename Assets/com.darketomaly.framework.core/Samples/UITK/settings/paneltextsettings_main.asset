@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: paneltextsettings_main
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.PanelTextSettings
   m_Version: 
-  m_DefaultFontAsset: {fileID: 11400000, guid: 8d09b62f905a1c247b74833fe165d32d, type: 2}
+  m_DefaultFontAsset: {fileID: 11400000, guid: bda95b7deb663e64d8bbcd2304dc0efd, type: 2}
   m_DefaultFontAssetPath: Fonts & Materials/
   m_FallbackFontAssets: []
   m_FallbackOSFontAssets:
@@ -37,8 +37,8 @@ MonoBehaviour:
   m_DefaultColorGradientPresetsPath: Text Color Gradients/
   m_UnicodeLineBreakingRules:
     m_UnicodeLineBreakingRules: {fileID: 0}
-    m_LeadingCharacters: {fileID: 0}
-    m_FollowingCharacters: {fileID: 0}
+    m_LeadingCharacters: {fileID: 4900000, guid: d82c1b31c7e74239bff1220585707d2b, type: 3}
+    m_FollowingCharacters: {fileID: 4900000, guid: fade42e8bc714b018fac513c043d323b, type: 3}
     m_UseModernHangulLineBreakingRules: 0
   m_DisplayWarnings: 0
   m_FontReferences:
