@@ -14,10 +14,10 @@ namespace Framework.EditorTools
 
         static ButtonEditor()
         {
-            Editor.finishedDefaultHeaderGUI += DrawButtons;
+            UnityEditor.Editor.finishedDefaultHeaderGUI += DrawButtons;
         }
 
-        private static void DrawButtons(Editor editor)
+        private static void DrawButtons(UnityEditor.Editor editor)
         {
             if (!(editor.target is MonoBehaviour))
                 return;
