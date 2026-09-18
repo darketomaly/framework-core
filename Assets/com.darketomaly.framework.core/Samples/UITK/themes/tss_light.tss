@@ -1,6 +1,6 @@
-@import url("/Assets/com.darketomaly.framework.core/Samples/UITK/tss_sys_base.tss");
+@import url("../tss_sys_base.tss");
 
-@import url("/Assets/com.darketomaly.framework.core/Samples/UITK/styles/uss_light.uss");
+@import url("../styles/uss_light.uss");
 
 
 
