@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="root" class="button-window">
+        <ui:VisualElement class="toolbar">
+            <ui:Button name="refresh-button" text="Refresh" class="refresh-button" style="width: 62px;"/>
+            <ui:TextField name="search-field" class="search-field"/>
+        </ui:VisualElement>
+        <ui:ScrollView name="button-scroll-view" horizontal-scrolling="false" horizontal-scroller-visibility="Hidden"/>
+    </ui:VisualElement>
+</ui:UXML>

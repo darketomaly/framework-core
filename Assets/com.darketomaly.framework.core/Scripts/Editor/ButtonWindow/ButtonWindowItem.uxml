@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" editor-extension-mode="False">
+    <ui:VisualElement class="button-row">
+        <ui:Button name="action-button" class="action-button">
+            <ui:Label name="method-name" text="Debug load playground" class="method-name" style="flex-shrink: 0; -unity-text-align: middle-left; text-overflow: ellipsis; overflow: hidden;"/>
+            <ui:Label name="target-name" text="Game area long name testing a very long name" class="target-name" style="white-space: nowrap; flex-shrink: 1;"/>
+        </ui:Button>
+        <ui:Button name="select-button" class="select-button"/>
+    </ui:VisualElement>
+</ui:UXML>

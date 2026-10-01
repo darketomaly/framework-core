@@ -1,0 +1,70 @@
+.button-window {
+    flex-grow: 1;
+}
+
+.toolbar {
+    flex-direction: row;
+    align-items: center;
+    height: 24px;
+}
+
+.refresh-button {
+    width: 28px;
+    min-width: 28px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.search-field {
+    flex-grow: 1;
+}
+
+.button-group {
+    flex-grow: 1;
+}
+
+.button-row {
+    flex-direction: row;
+    width: 100%;
+    min-height: 20px;
+}
+
+.action-button {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.method-name {
+    flex-shrink: 0;
+}
+
+.target-name {
+    color: #a0a0a0;
+    margin-left: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.select-button {
+    width: 28px;
+    min-width: 28px;
+    flex-shrink: 0;
+    background-size: 16px 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.inactive-label {
+    color: #a0a0a0;
+    font-size: 10px;
+    margin-left: 4px;
+}
