@@ -12,14 +12,14 @@ public class MethodButtonEditor : Editor
         // Draw the default fields first
         DrawDefaultInspector();
 
-        // Use reflection to find all methods with the [Button] attribute
+        // Use reflection to find all methods with the [DarkButton] attribute
         var methods = target.GetType()
             .GetMethods(BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic)
-            .Where(m => m.GetCustomAttribute<ButtonAttribute>() != null);
+            .Where(m => m.GetCustomAttribute<DarkButtonAttribute>() != null);
 
         foreach (var method in methods)
         {
-            var attribute = method.GetCustomAttribute<ButtonAttribute>();
+            var attribute = method.GetCustomAttribute<DarkButtonAttribute>();
             
             // Fallback to the method's name if no custom label is provided
             string buttonLabel = string.IsNullOrEmpty(attribute.ButtonName) 
@@ -29,11 +29,18 @@ public class MethodButtonEditor : Editor
             // Restrict to parameterless methods for this basic implementation
             if (method.GetParameters().Length == 0)
             {
-                if (GUILayout.Button(buttonLabel))
+                bool enabled = attribute.Mode == DarkButtonMode.AlwaysEnabled
+                    || (EditorApplication.isPlaying && attribute.Mode == DarkButtonMode.EnabledInPlayMode)
+                    || (!EditorApplication.isPlaying && attribute.Mode == DarkButtonMode.DisabledInPlayMode);
+
+                using (new EditorGUI.DisabledScope(!enabled))
                 {
-                    foreach (var t in targets)
+                    if (GUILayout.Button(buttonLabel))
                     {
-                        method.Invoke(t, null);
+                        foreach (var t in targets)
+                        {
+                            method.Invoke(t, null);
+                        }
                     }
                 }
             }

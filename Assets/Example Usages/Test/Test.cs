@@ -23,7 +23,7 @@ namespace TestNamespace
             this.Log($"Fade start. Fade in: {value}");
         }
         
-        [Button]
+        [DarkButton]
         private void TestMethod()
         {
             //float tmp = 0;

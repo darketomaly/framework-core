@@ -24,10 +24,10 @@ public sealed class ButtonWindow : EditorWindow
     private ScrollView m_ButtonScrollView;
     private TextField m_SearchField;
 
-    [MenuItem("Tools/Framework/Buttons")]
+    [MenuItem("Tools/Framework/Dark Buttons")]
     private static void Open()
     {
-        GetWindow<ButtonWindow>("Buttons");
+        GetWindow<ButtonWindow>("Dark Buttons");
     }
 
     private void OnEnable()
@@ -178,7 +178,7 @@ public sealed class ButtonWindow : EditorWindow
             var targetLabel = row.Q<Label>("target-name");
 
             actionButton.clicked += () => Invoke(button.Method, target.Component);
-            actionButton.SetEnabled(target.IsValid && target.IsActive);
+            actionButton.SetEnabled(target.IsValid && target.IsActive && button.IsEnabled);
             methodLabel.text = button.DisplayName;
             targetLabel.text = target.DisplayName;
             selectButton.tooltip = target.HierarchyPath;
@@ -226,11 +226,12 @@ public sealed class ButtonWindow : EditorWindow
             .Select(method => new
             {
                 Method = method,
-                Attribute = method.GetCustomAttribute<ButtonAttribute>()
+                Attribute = method.GetCustomAttribute<DarkButtonAttribute>()
             })
             .Where(item => item.Attribute != null && item.Method.GetParameters().Length == 0)
             .Select(item => new ButtonMethod(
                 item.Method,
+                item.Attribute,
                 string.IsNullOrEmpty(item.Attribute.ButtonName)
                     ? ObjectNames.NicifyVariableName(item.Method.Name)
                     : item.Attribute.ButtonName))
@@ -329,14 +330,19 @@ public sealed class ButtonWindow : EditorWindow
 
     private sealed class ButtonMethod
     {
-        public ButtonMethod(MethodInfo method, string displayName)
+        public ButtonMethod(MethodInfo method, DarkButtonAttribute attribute, string displayName)
         {
             Method = method;
+            Attribute = attribute;
             DisplayName = displayName;
         }
 
         public MethodInfo Method { get; }
+        public DarkButtonAttribute Attribute { get; }
         public string DisplayName { get; }
+        public bool IsEnabled => Attribute.Mode == DarkButtonMode.AlwaysEnabled
+            || (EditorApplication.isPlaying && Attribute.Mode == DarkButtonMode.EnabledInPlayMode)
+            || (!EditorApplication.isPlaying && Attribute.Mode == DarkButtonMode.DisabledInPlayMode);
     }
 }
 
