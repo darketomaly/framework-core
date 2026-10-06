@@ -16,7 +16,7 @@ namespace Framework
                 Object.DontDestroyOnLoad(spawn);
             } else
             {
-                projectConfig.LogError("Game manager prefab not found, please assign one on Resources/Framework project config scriptable.");
+                projectConfig.Log("Warning: Game manager prefab not found, please assign one on Resources/Framework project config scriptable.");
             }
         }
     }
